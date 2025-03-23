@@ -1,0 +1,28 @@
+[versions]
+gradle = "8.10.2"
+kotlin = "2.1.20"
+http4k="6.2.0.0"
+junit="5.12.1"
+junitLauncher="1.12.1"
+jsoup="1.19.1"
+pesticide="1.6.6"
+kondor="3.4.2"
+strikt="0.35.1"
+postgresql="42.2.18"
+exposed="0.32.1"
+klaxon="5.5"
+slf4j="2.0.7"
+
+[libraries]
+kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
+http4k-core = { group = "org.http4k", name = "http4k-core", version.ref = "http4k" }
+http4k-server-jetty = { group = "org.http4k", name = "http4k-server-jetty", version.ref = "http4k" }
+kondor-core = { group = "com.ubertob.kondor", name = "kondor-core", version.ref = "kondor" }
+junit-jupiter-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junit" }
+junit-platform-launcher = { group = "org.junit.platform", name = "junit-platform-launcher", version.ref = "junitLauncher" }
+http4k-client-jetty = { group = "org.http4k", name = "http4k-client-jetty", version.ref = "http4k" }
+pesticide-core = { group = "com.ubertob.pesticide", name = "pesticide-core", version.ref = "pesticide" }
+strikt-core = { group = "io.strikt", name = "strikt-core", version.ref = "strikt" }
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
