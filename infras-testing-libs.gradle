@@ -1,0 +1,36 @@
+/** FILE INFORMATION
+ *
+ *   Created by: Thinh Truong Nguyen (he/ him)
+ *             on: 2025-03-25
+ *
+ *   Email: nguyentruongthinhvn2020@gmail.com
+ *      Tel: +84(393280504)
+ */
+
+dependencies {
+    // Modules
+    // Files
+    // Kotlin's Standard Library
+    implementation(libs.kotlin.stdlib)
+
+    testImplementation(libs.junit.jupiter.engine)
+    testRuntimeOnly(libs.junit.platform.launcher)
+    testImplementation(libs.pesticide.core)
+    testImplementation(libs.strikt.core)
+}
+
+tasks {
+    test {
+        useJUnitPlatform()
+        testLogging {
+            events "passed", "skipped", "failed"
+        }
+
+        // If true show println in test console
+        testLogging.showStandardStreams = false
+
+        // Start tests every time, even when code not changed
+        outputs.upToDateWhen { false }
+    }
+}
+

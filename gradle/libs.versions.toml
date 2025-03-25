@@ -31,7 +31,7 @@ exposed-crypt = { module = "org.jetbrains.exposed:exposed-crypt" }
 exposed-dao = { module = "org.jetbrains.exposed:exposed-dao" }
 exposed-jdbc = { module = "org.jetbrains.exposed:exposed-jdbc" }
 exposed-kotlin-datetime = { module = "org.jetbrains.exposed:exposed-kotlin-datetime" }
-#Database
+# Database
 postgresql = { group = "org.postgresql", name = "postgresql", version.ref = "postgresql" }
 # Json
 kondor-core = { group = "com.ubertob.kondor", name = "kondor-core", version.ref = "kondor" }
@@ -54,3 +54,4 @@ structurizr-autolayout = { group = "com.structurizr:structurizr", name = "struct
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }

@@ -6,7 +6,8 @@
 Designing and Developing Innovative Modern & Secure Software Applications, 
 Sustainable Software Architecture.<br>
 Scalable Applications in Kotlin. Write and maintain large software application 
-code bases.
+code bases. <hr>
+<img src="/images/spike.png">
 
 ## Prerequisites
 - IntelliJ IDEA (any version at the JetBrains site) or other Java IDEs with a 
@@ -15,6 +16,8 @@ code bases.
 - JDK 21 LTS
 
 ## Installation
+
+## Parts
 
 ## Next steps
 

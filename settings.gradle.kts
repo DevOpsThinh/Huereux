@@ -5,4 +5,5 @@ plugins {
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 rootProject.name = "Huereux"
-
+include("infrastructure:http")
+findProject(":infrastructure:http")?.name = "http"
