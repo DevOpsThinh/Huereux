@@ -4,13 +4,21 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+        <option name="testRunner" value="CHOOSE_PER_TEST" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="gradleHome" value="$PROJECT_DIR$/../../Gradle/gradle-8.6" />
+        <option name="gradleJvm" value="#GRADLE_LOCAL_JAVA_HOME" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/domain" />
+            <option value="$PROJECT_DIR$/domain/article" />
+            <option value="$PROJECT_DIR$/domain/hdomain" />
+            <option value="$PROJECT_DIR$/domain/media" />
+            <option value="$PROJECT_DIR$/domain/user" />
             <option value="$PROJECT_DIR$/infrastructure" />
             <option value="$PROJECT_DIR$/infrastructure/http" />
+            <option value="$PROJECT_DIR$/webapp" />
           </set>
         </option>
       </GradleProjectSettings>

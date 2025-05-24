@@ -1,0 +1,251 @@
+https://github.com/Ares-Defence-Labs/KmpEssentials/tree/main
+
+itloveleaf.com/ clovervn.com (Godady)
+
+
+## References
+
+- [From Objects to Functions](https://pragprog.com/titles/uboop/from-objects-to-functions/)
+
+
+## Web Development with Function Programming
+
+`Is the art of minimizing the code depending on side effects and keeping it at the outer edge of your programs`
+
+### Handling HTTP Using Functions
+
+- Http4k domain-specific language (define routes, html pages, start http4k)
+
+- Handle the Risk
+
+- Acceptance Test
+
+- Designing with Arrows
+
+- Serving Lists from a Map
+
+- Parse the Response
+
+- Parse the HTML
+
+### Defining the Domain & Testing it
+
+- Entities have an ID that allows we to tell them apart.Their properties can change, but the ID always remains the same.
+
+- Value objects describe some aspect of an entity. They don't have IDs, and if change of their properties, we create a new value object.For this reason, they should always be immutable.
+
+- Separating the Domain from the Infrastructure (Hub interface, Plug the hub into app)
+
+- Convert Acceptance Tests to DDT -> Pesticide
+
+### Modeling the Domain and the Adapters
+
+- To Type or Not to Type: One of the hardest choices to make is how many new domain-specific types we should create.Type provide safety and robustness in exchange for complexity and development time.Kotlin's value classes are a neat way to wrap our primitives into custom types, since they (mostly) spare we from the overhead of handling a normal class.
+
+- Anemic Models (They mainly consist of data without behavior)
+
+- Inverting Dependencies with Repositories (Ports)
+
+- Domain-driven test process
+
+### Using Events to modify the state.
+
+- With immutable data.
+
+### Executing Command to generate events
+
+- Using commands (the write model) to change the state: Use a "command-oriented
+  interface" for our
+  internal API.
+  => easily add common behavior to commands by decorating the command executor (very handy
+  for handling transactions, logging, ...).
+  
+- Generate events from commands
+
+- Modeling a domain with event sourcing keeps our source code closer to what actually
+  happens in the real world
+  - Transitional entities
+  - Entity states
+  
+- Writing functional state machines
+  - The event store: Must implement the Event Persister (fb) & List Retriever (interface).
+
+- Connecting the Hub
+
+- Read model
+
+- The functional finite state machine
+
+- In app life cycle, events -> obsolete, where commands tend to be more stable. => to
+  keep the events internal to the domain. Commands -> part of the public API of our system
+
+### Handling Errors Functionally
+
+- Handling Errors with Null
+
+- Keeping the Exceptions Exceptional
+
+- Three groups of exceptions:
+  - Errors: from which no recovery is possible
+  - Checked exceptions: which are considered legitimate negative results
+  - Runtime exceptions: which were intended for cases that shouldn't happen (bugs)
+
+- Functional Error handling
+
+- Learning Functors and Categories:
+  - Define Category in Code:
+    1. Creating new types (generics) based on any type we have in our category
+    2. Allow us to still use our function on the new types
+  - How can we use our function on the new functor type:
+    1. Apply the function to transform our functor into a Holder<Int>
+       (when we only need to apply a function to a single functor)
+    2. Use the functor to lift our function so that it can operate directly on functors
+       (when we need to apply a function to multiple functors)
+  - The laws of functors, must preserve:
+    1. Identity morphisms
+    2. Composition of morphisms.
+  - Looking at Lists as Functors
+
+- Using Functors to handle Errors
+  - Handling errors with Union Types to represent the outcome of our calculations,
+    combining two concrete subtypes—success or failure.
+
+### Using Functors to project Events
+
+- Remove the mutable Fetcher, then generate custom views (projections) of our data
+  "projecting" the events.
+
+- The projections work as read-only models and can be stored on a persistence layer.
+
+1. Projecting our Events
+
+- Defining the projection: It can be compared to a database table, a collection of
+  records (rows)
+  
+- Depend on two types:
+  - The type of events that generate the projection.
+  - The type of stored state—the projection row.
+  
+- Working with rows (Each event will update, delete or create a new row.)
+  - The projector is a function that must update the projection rows. It takes a
+    stream of events and creates the equivalent of a table with them.
+    
+- Projecting Events on a Map
+
+2. Running Queries on Functors
+   (Have a function that takes a QueryRunner and returns a result of an arbitrary type T)
+
+
+______________________________________________________________________________
+
+### Terminologies
+
+- Anemic objects antipattern
+
+- Endofunctor: Functors that map a category on themselves.
+
+- Generics: Are type builders
+
+- Category: A mathematical concept introduced to define the relation between things
+  in the most abstract way possible.
+  
+- Functors: error-aware magic arrows (maps two categories together) - 
+
+  - Give us control over when the query is executed.
+  - We only want to run the query when it's correct, and at a minimum (ensure that the
+    projections are up-to-date)
+  - There may be additional checks that need to be performed => allow us to separate
+    the technical infrastructure concerns from the business requirements in a clean
+    and original manner.
+  - As a result conveys the message that there is a change of context when running a
+    query.
+  - Using a functor for our ProjectionQuery is Laziness.
+  
+- Aggregate: A set of related entities that can be changed together inside an atomic
+  transaction.
+  
+- Entity states
+
+- Entity: is defined based on its identity, and a set of related entities that can be
+  changed together is called an aggregate.
+  
+- State-transitions/ transition-sourcing/ transitional entities
+
+- Commands (messages that arrive from outside, can fail)
+
+- Events (the record that the state of the system has changed, can't fail)
+
+- A monoid without a neutral element => a semigroup.
+
+- Union types (sum, coproduct)/ data class (product types)/ function types (exponential types)
+- Accumulator/ Reducer/ Recursion.
+
+- immutable - "snapshot in time" of any list.
+
+- Low Cardinality
+
+- Christmas tree indentation -> resolve by let function.
+
+- Testing cycle
+
+- Modulith - a modular monolith (Implementing the Clean Architecture (Sebastian Buczynski)
+
+- module:
+  (is a cohesive package of code with its own vocabulary (in particular having a
+  specific name for a user). It groups related functionalities and exposes them using a
+  module API. A well-designed module resembles a microservice, though there is no
+  network communication needed to use the module).
+  
+- Hub: Use an interface to wrap all the domain logic and keep it separated from the external adapter (Port & Adapter - Hexagonal Architecture). The hub defines and abstracts upon the boundaries between the domain and the technical layer - in a very precise and oddly satisfying way.
+  The domain stays inside the hub and only communicates with the rest of the app using specific funtions.
+
+### Methods/ Approaches:
+
+- event-storming session (a big whiteboard session)
+
+- Executing commands to generate events (commands -> events -> states).
+
+- Using events to modify the state (to trace the history of our app state).
+
+- Function composition and immutable data types to effectively design in a functional way.
+
+- Separating the Domain from the Infrastructure (the logic that forms the business domain model | technical implementation.
+
+### Design Patterns
+
+- Event Sourcing (not event driven):
+  Using events to trace the history of our application state.
+  Instead of persisting the new state at every change, we persist only the change, specifying the 	business reason - the business event. Give us an audit flow of who did what on entity.
+  This way => reconstruct the history of the entity up to the current state, calculate the state 	of any time in the past, only need to process all the events up to a certain time.
+  Can use the stream of events to collect other statistics that can be hard to obtain otherwise.
+  Benefits: The ability to:
+  1. Maintain the information about the business event behind the change
+  2. Collect all the audit (kiem toan, su xet) data
+  3. Reconstruct the state a a certain time in the past
+  4. Create multi-different views of the same data.
+
+- Application Facade:
+  As a facade or proxy for a complex system, hiding the more
+  complex innards and making it easy to interact with.
+  We want to use it to extract info and give commands to our Application without
+  cluttering the test with technical details (an interface that abstracts
+  the interactions with our helper, allowing both querying its state and changing it).
+
+
+______________________________________________________________________________
+http://localhost:8080/todo/user/listname
+
+### Links
+
+- [Command-oriented interface](https://martinfowler.com/bliki/CommandOrientedInterface.html)
+
+
+
+Note:
+
+- Kotlin’s value classes are a neat way to wrap your primitives into custom types,
+  since they (mostly) spare you from the overhead of handling a normal class.
+
+- class User(name: String, isAdmin: Boolean) => Avoid this by using inheritance
+
+open class User(), class Admin(): User()

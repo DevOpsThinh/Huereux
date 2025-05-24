@@ -1,5 +1,11 @@
 [versions]
-gradle = "8.10.2"
+android-compile-sdk = "35"
+android-min-sdk = "28"
+android-target-sdk = "35"
+android-version-code = "1"
+android-version-name = "1.0"
+agp = "8.10.0"
+gradle = "8.11.1"
 kotlin = "2.1.20"
 koin-bom = "4.0.2"
 http4k="6.2.0.0"
@@ -13,6 +19,10 @@ postgresql="42.7.5"
 exposed-bom="0.60.0"
 slf4j="2.0.17"
 structurizr = "3.2.1"
+kotlinTest = "2.1.20"
+runner = "1.5.2"
+core = "1.5.0"
+junitVersion = "1.1.5"
 
 [libraries]
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
@@ -51,7 +61,15 @@ structurizr-dsl = { group = "com.structurizr:structurizr", name = "structurizr-d
 structurizr-import = { group = "com.structurizr:structurizr", name = "structurizr-import", version.ref = "structurizr" }
 structurizr-export = { group = "com.structurizr:structurizr", name = "structurizr-export", version.ref = "structurizr" }
 structurizr-autolayout = { group = "com.structurizr:structurizr", name = "structurizr-autolayout", version.ref = "structurizr" }
+kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test", version.ref = "kotlinTest" }
+runner = { group = "androidx.test", name = "runner", version.ref = "runner" }
+core = { group = "androidx.test", name = "core", version.ref = "core" }
+junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 
 [plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+android-kotlin-multiplatform-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }

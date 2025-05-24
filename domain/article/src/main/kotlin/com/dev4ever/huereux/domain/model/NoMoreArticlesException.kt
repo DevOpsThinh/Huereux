@@ -28,52 +28,16 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-Created At: 22:46 - 25/03/2025
+Created At: 00:56 - 23/05/2025
 */
 
-package com.dev4ever.heureux.webservice
+package com.dev4ever.huereux.domain.model
 
 // <editor-fold desc="ESSENTIAL PACKAGES">
-import org.http4k.core.HttpHandler
-import org.http4k.core.Method.GET
-import org.http4k.core.Method.POST
-import org.http4k.core.Request
-import org.http4k.core.Response
-import org.http4k.core.Status.Companion.CREATED
-import org.http4k.core.Status.Companion.OK
-import org.http4k.routing.bind
-import org.http4k.routing.routes
 
 // </editor-fold>
 
-val htmlPage = """
-  <html>
-      <body>
-          <h1 style="text-align:center; font-size:3.2em; color:orange;" >
-          Say hi, from Vietnam!
-          </h1>
-          <hr>
-          <footer>
-            <p style="text-align:center; font-size:1.2em; color:grey;">
-              <em>Petites habitudes, grandes réussites</em>
-            </p>
-          </footer>
-      </body>
-  </html>
-""".trimIndent()
+// <editor-fold desc="CLASSES">
+class NoMoreArticlesException(message: String) : Exception(message)
 
-val handler: HttpHandler = routes(
-  "/" bind GET to ::sayHello,
-  "/hello" bind GET to ::sayHello,
-  "/message" bind POST to ::helloMessage,
-)
-
-//val handler: HttpHandler = {
-//  Response(OK).body(htmlPage)
-//}
-
-fun helloMessage(req: Request): Response = Response(CREATED)
-  .body("Received ${req.bodyString()} from hello message")
-
-fun sayHello(req: Request): Response = Response(OK)
-  .body(htmlPage)
+// </editor-fold>
